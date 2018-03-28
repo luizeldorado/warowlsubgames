@@ -1,0 +1,86 @@
+table {
+	border-collapse: collapse;
+	table-layout: fixed;
+	width: 100%;
+}
+
+table, tr, td, th {
+	border: 1px solid black;
+	padding: 4px;
+	text-align: center;
+	white-space: nowrap; 
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+tr {
+	height: 32px;
+}
+
+tr.selected {
+	background-color: #def;
+}
+
+tr.notselected {
+	background-color: #fdd;
+}
+
+td:nth-child(1), th:nth-child(1) {
+	width: 64px;
+	vertical-align: middle;
+}
+img.avatar {
+	width: 24px;
+}
+
+td:nth-child(2), th:nth-child(2) {
+	width: 192px;
+	vertical-align: middle;
+}
+
+td:nth-child(4), th:nth-child(4) {
+	width: 96px;
+	text-align: center;
+}
+td:nth-child(4) button {
+	display: inline-block;
+	width: 100%;
+	margin: 0;
+}
+
+.column {
+	float: left;
+	margin-right: 16px;
+}
+
+.column.settings {
+	width: 200px;
+}
+
+.column.table {
+	width: 800px;
+}
+
+button {
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+input {
+	margin-bottom: 4px;
+	margin-top: 4px;
+}
+
+input[type="text"], input[type="password"] {
+	width: 152px;
+}
+
+fieldset {
+	border: none;
+	padding: 0;
+	margin: 0;
+}
+
+.error {
+	color: #800;
+}
