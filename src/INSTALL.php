@@ -10,11 +10,19 @@
 	if (isset($_GET['f'])) {
 		if (file_exists($_GET['f'])) {
 			$configfile = $_GET['f'];
+		} else {
+			echo $_GET['f']." (in 'f' parameter) doesn't exist, using CONFIG.php\n";
 		}
+	}
+
+	if (!file_exists($configfile)) {
+		echo $configfile." configuration file doesn't exist. Please create one.\n";
+		die;
 	}
 
 	//Insert config file (will add config vars)
 	echo "Loading ".$configfile." file...\n";
+
 	require($configfile);
 
 	if(!$admin_password) {
@@ -92,7 +100,7 @@ INSERT INTO config VALUES (0,0,"'.$twitch_client_id.'", "'.$twitch_redirect_url.
 	$db_database = "'.$db_database.'";
 ?>';
 
-	if(!file_put_contents("internal-dbinfo.php", $s)) {
+	if(!file_put_contents("php/internal-dbinfo.php", $s)) {
 		echo "Config file creation error.\n";
 		die;
 	}

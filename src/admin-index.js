@@ -13,7 +13,7 @@ function checkLogin() {
 		<p>Checking login...</p>
 	`;
 
-	var x = XHR("api-admin-getinfo.php",
+	var x = XHR("php/api-admin-getinfo.php",
 		receiveAPIAdminGetInfo);
 }
 
@@ -60,7 +60,7 @@ function showLoginPanel() {
 elems['loginpanel'].addEventListener("submit",function(e) {
 	e.preventDefault();
 
-	var x = XHR("api-admin-login.php?password="+elems["loginpassword"].value,
+	var x = XHR("php/api-admin-login.php?password="+elems["loginpassword"].value,
 		receiveAPIAdminLogin);
 });
 
@@ -91,7 +91,7 @@ function receiveAPIAdminLogin() {
 elems['logout'].addEventListener("click",function(e) {
 	if (refreshtimeout) {clearTimeout(refreshtimeout)};
 
-	var x = XHR("api-admin-logout.php",
+	var x = XHR("php/api-admin-logout.php",
 		function() {
 			showLoginPanel();
 		});
@@ -102,7 +102,7 @@ elems['logout'].addEventListener("click",function(e) {
 elems['adminpasswordform'].addEventListener("submit",function(e) {
 	e.preventDefault();
 
-	var x = XHR("api-admin-setadminpassword.php?password="+elems["adminpassword"].value,
+	var x = XHR("php/api-admin-setadminpassword.php?password="+elems["adminpassword"].value,
 		receiveAPIAdminSetAdminPassword);
 	elems['adminpasswordform'].querySelector("fieldset").disabled = true;
 	elems["adminpassword"].value = "";
@@ -134,7 +134,7 @@ function receiveAPIAdminSetAdminPassword() {
 elems['serverform'].addEventListener("submit",function(e) {
 	e.preventDefault();
 
-	var x = XHR("api-admin-setserverinfo.php?ip="+elems["serverip"].value+"&password="+elems["serverpassword"].value,
+	var x = XHR("php/api-admin-setserverinfo.php?ip="+elems["serverip"].value+"&password="+elems["serverpassword"].value,
 		function() {
 			elems['status'].innerHTML = `
 				<p>Server information changed.</p>
@@ -154,7 +154,7 @@ elems['serverpasswordshow'].addEventListener("click",function(e) {
 //viewer mode checkbox
 elems['viewermode'].addEventListener("change",function(e) {
 	elems['viewermode'].disabled = true;
-	var x = XHR("api-admin-setviewermode.php?state="+(elems['viewermode'].checked?1:0),
+	var x = XHR("php/api-admin-setviewermode.php?state="+(elems['viewermode'].checked?1:0),
 		function() {
 			elems['viewermode'].disabled = false;
 			elems['status'].innerHTML = `
@@ -168,7 +168,7 @@ elems['viewermode'].addEventListener("change",function(e) {
 
 //open subgames button
 elems['gameopen'].addEventListener("click",function(e) {
-	var x = XHR("api-admin-setgameopen.php?open=1",
+	var x = XHR("php/api-admin-setgameopen.php?open=1",
 		function() {
 			elems['gameopen'].disabled = true;
 			elems['gameclose'].disabled = false;
@@ -181,7 +181,7 @@ elems['gameopen'].addEventListener("click",function(e) {
 
 //close subgames button
 elems['gameclose'].addEventListener("click",function(e) {
-	var x = XHR("api-admin-setgameopen.php?open=0",
+	var x = XHR("php/api-admin-setgameopen.php?open=0",
 		function() {
 			elems['gameopen'].disabled = false;
 			elems['gameclose'].disabled = true;
@@ -209,7 +209,7 @@ elems['autorefresh'].addEventListener("change",function(e) {
 
 //table
 function getPlayers() {
-	var x = XHR("api-admin-getplayers.php",
+	var x = XHR("php/api-admin-getplayers.php",
 		receiveAPIAdminGetPlayers,
 		function(e){
 			if (autorefresh) {
@@ -331,7 +331,7 @@ function selectPlayer(userid) {
 
 	setButtonAndRow(3,button,row);
 
-	var x = XHR("api-admin-selectplayer.php?userid="+userid,
+	var x = XHR("php/api-admin-selectplayer.php?userid="+userid,
 		function() {
 			setButtonAndRow(1,button,row);
 		},

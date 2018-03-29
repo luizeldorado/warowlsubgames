@@ -5,16 +5,24 @@ This was made for the streamer [WarOwl](https://twitch.tv/warowl), and by me, Lu
 
 ## Installation
 
-1. Open `CONFIG.php` in a text editor and configure everything accordingly. You will need:
+1. Copy the contents of the `src` folder to a place in your webserver.
+
+2. Open `CONFIG.php` in a text editor and configure everything accordingly. You will need:
 - **An admin password.** Set this to something really secure.
 - **Database host, username and password.** If you don't know how to get these, I don't think I can really help you.
-- **Twitch client ID and Twitch redirect URL.** Create a cliend ID in (https://dev.twitch.tv/dashboard/apps). The redirect URL should be the home page in your website (i.e. index.html).
+- **Twitch client ID and Twitch redirect URL.** Create a cliend ID in <https://dev.twitch.tv/dashboard/apps>. The redirect URL should be the home page in your website (i.e. index.html).
 - **Twitch channel ID**. By default, it uses WarOwl's id.
 
-2. In your server, run (which generally means open it on a browser) the file `INSTALL.php?password=<admin password>`. The "admin password" is the same you set in the `CONFIG.php` file.
+3. In your server, run (which generally means open it on a browser) the file `INSTALL.php?password=<admin password>`. The "admin password" is the same you set in the `CONFIG.php` file.
 
-3. If everything goes right, "Done!!1" will appear on the screen. Then, you can go to the control panel and change other stuff as the CS:GO server information. If it doesn't, well... it's gonna take a lot of work from me to fix it, probably.
+4. If everything goes right, "Done!!1" will appear on the screen. Then, you can go to the control panel and change other stuff as the CS:GO server information. If it doesn't, well... it's gonna take a lot of work from me to fix it, probably.
+
+## Live version
+
+<https://luizpontes.000webhost.com/random/warowl_v2> contains the whole system. It is intended to be used by WarOwl in case he cannot host this for whatever reason.
 
 ## Additional info
 
 - You can select a config file by adding a `f` parameter in `INSTALL.php`.
+- The installation process deletes the selected database if it exists, before recreating it again. Because of that, you might have to manually create a database in your server.
+- I separated what is front-end and back-end. You can create your own user interface if you want using the API.

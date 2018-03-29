@@ -1,6 +1,6 @@
 <?php
 	
-	require("internal-dbinfo.php");
+	require("php/internal-dbinfo.php");
 	error_reporting(0);
 
 	$c = new mysqli($db_host,$db_username,$db_password,$db_database);

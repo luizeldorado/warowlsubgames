@@ -7,7 +7,7 @@ var token,avatar,username,game_viewermode,game_open,refreshtimeout;
 refreshtime = 2500;
 
 function getInfo() {
-	var x = XHR("api-getinfo.php",
+	var x = XHR("php/api-getinfo.php",
 		receiveAPIGetInfo,
 		function(e) { // error
 			dealWithError("Could not get info because "+x.status,true);
@@ -64,7 +64,7 @@ function checkToken() {
 		<p>Entering...</p>
 	`;
 
-	var x = XHR("api-enter.php?token="+token,
+	var x = XHR("php/api-enter.php?token="+token,
 		receiveAPIEnter,
 		function(e) { // error
 			dealWithError("Could not enter subgame because "+x.status);
@@ -92,7 +92,7 @@ function receiveAPIEnter() {
 			elems['status'].innerHTML = `
 				<p><a href="">Logout</a></p>
 				<p>You, `+getAvatarAndUsername()+` entered. Wait.</p>
-				<img src="loading.gif" />
+				<img src="img/loading.gif" />
 			`;
 			checkServerUpdates();
 			break;
@@ -100,7 +100,7 @@ function receiveAPIEnter() {
 			elems['status'].innerHTML = `
 				<p><a href="">Logout</a></p>
 				<p>You, `+getAvatarAndUsername()+` were already entered. Wait more.</p>
-				<img src="loading.gif" />
+				<img src="img/loading.gif" />
 			`;
 			checkServerUpdates();
 			break;
@@ -128,7 +128,7 @@ function getAvatarAndUsername() {
 }
 
 function checkServerUpdates() {
-	x = XHR("api-getstate.php?token="+token,
+	x = XHR("php/api-getstate.php?token="+token,
 		receiveAPIGetState,
 		function(e) { // error
 			dealWithError("Could not get status because "+x.status+", trying again");
@@ -193,7 +193,7 @@ function showMessageForm() {
 elems['messageform'].addEventListener('submit',function(e){
 
 	e.preventDefault();
-	var x = XHR("api-setmessage.php?token="+token+"&message="+encodeURIComponent(elems['messagetext'].value),
+	var x = XHR("php/api-setmessage.php?token="+token+"&message="+encodeURIComponent(elems['messagetext'].value),
 		receiveAPISetMessage,
 		function() {
 			dealWithError("Could not set message because "+x.status);
