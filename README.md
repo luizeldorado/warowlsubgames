@@ -19,7 +19,7 @@ This was made for the streamer [WarOwl](https://twitch.tv/warowl), and by me, Lu
 
 ## Live version
 
-<https://luizpontes.000webhost.com/random/warowl_v2> contains the whole system. It is intended to be used by WarOwl in case he cannot host this for whatever reason.
+<http://luizpontes.000webhostapp.com/w/pages/warowlsubgames/> contains the whole system. It is intended to be used by WarOwl in case he cannot host this for whatever reason.
 
 ## Additional info
 
